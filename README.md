@@ -1,21 +1,69 @@
-# alignet
-
-TODO(b/413644407): Add a description for your new project, explain what is
-being released here, etc... Additional, the following sections are normally
-expected for all releases. Feel free to add additional sections if appropriate
-for your project.
+# AligNet
+Code for finetuning a pretrained SigLIP model on the AligNet dataset.
 
 ## Installation
 
-Write instructions for how the user should install your code. The instructions
-should ideally be valid when copy-pasted. You can combine this with the Usage
-section if there's no separate installation step.
+* Clone Repository
+
+  ``` bash
+  git clone https://github.com/google-deepmind/alignet.git
+  ```
+* Install requirements
+
+  ```bash
+  pip install -r alignet/requirments.txt
+  ```
+
+## Download data
+
+### AligNet triplets
+Download the data: TODO
+
+```bash
+wget ALIGNET_DATA_URL_TODO $HOME/alignet
+```
+
+### ImageNet
+AligNet training depends on the tensorflow_datasets
+[`imagenet2012`](https://www.tensorflow.org/datasets/catalog/imagenet2012)
+dataset in `array_record` format.
+
+This dataset requires you to download the source data manually into
+`download_config.manual_dir` (defaults to
+`~/tensorflow_datasets/downloads/manual/`):
+`manual_dir` should contain two files: `ILSVRC2012_img_train.tar` and
+`ILSVRC2012_img_val.tar`. You need to register on
+https://image-net.org/download-images in order to get the link to download the
+dataset.
+
+After downloading the files (approx 150GB) the creation of the dataset can be
+triggered by running (takes about an hour):
+
+```python
+import tensorflow_datasets as tfds
+ds = tfds.data_source("imagenet2012", split="train")
+```
+
+NOTE: Note the use of `tfds.data_source` rather than `tfds.load`. This is needed
+ because otherwise TFDS defaults to generating the dataset in TFRecords format
+ which doesn't support random access, and does not work with AligNet finetuning.
 
 ## Usage
+To run AligNet finetuning on a pretrained SigLIP Vit-B model:
 
-Write example usage of your code. The instructions should ideally be valid when
-copy-pasted, and will be used by your technical reviewer to verify that your
-package functions correctly.
+* Navigate to the parent directory of the `alignet` repository.
+* Adjust `--cfg.aux.data_dir` to point to the directory containing the AligNet
+  triplets.
+* Point `--cfg.workdir` to the directory to which checkpoints etc should be
+  saved.
+* Run:
+
+  ```bash
+  python -m kauldron.main \
+    --cfg=alignet/configs/siglip.py \
+    --cfg.workdir=/tmp/kauldron/workdir \
+    --cfg.aux.data_dir=/path/to/alignet/dataset
+  ```
 
 ## Citing this work
 
