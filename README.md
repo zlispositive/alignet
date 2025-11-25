@@ -135,6 +135,10 @@ As part of the AligNet project we also collected an evaluation dataset of human
  similarity judgments spanning multiple levels of semantic abstraction.
 It can be found here: https://gin.g-node.org/fborn/Dataset_Levels
 
+**Note: if you wish to reproduce our human evaluation results from the paper, you
+will need to use the Levels dataset; the default evaluation of the code in this
+repository uses the AligNet validation set.**
+
 ## Run AligNet finetuning on SigLIP
 
 * Navigate to the parent directory of the `alignet` repository.
