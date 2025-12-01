@@ -1,6 +1,6 @@
 # AligNet Project Training Code, Data, and Model Checkpoints
 
-This repository contains code and dataset information for ["Aligning Machine and Human Visual Representations across Abstraction Levels."](https://arxiv.org/abs/2409.06509)
+This repository contains code and dataset information for ["Aligning Machine and Human Visual Representations across Abstraction Levels."](https://www.nature.com/articles/s41586-025-09631-6)
 Specifically, it includes the code for finetuning a pretrained SigLIP model on
 the AligNet dataset, as well as links and documentation for the dataset and
 the aligned model checkpoints.
@@ -26,7 +26,7 @@ a synthetic human-like similarity judgment dataset on a much larger scale than
 has previously been possible. We have released this dataset, example finetuning
 code for using it, and some finetuned versions of prior models.
 
-Please see the [AligNet paper](https://arxiv.org/pdf/2409.06509) for further
+Please see the [AligNet paper](https://www.nature.com/articles/s41586-025-09631-6) for further
 details on the motivation and procedures.
 
 ## Installation
@@ -66,7 +66,7 @@ and `n=10k` for validation. Row *i* describes the *i*th triplet. Note that
 within each triplet we sorted the images such that the last image is always the
 one that is most dissimilar to the other two (i.e., the "odd-one-out"),
 according to a prediction made by a model we trained (see the
-[AligNet paper](https://arxiv.org/pdf/2409.06509) for details).
+[AligNet paper](https://www.nature.com/articles/s41586-025-09631-6) for details).
 
 * `filenames`: (n, 3) strings: Identifies the images used for this triplet.
   Each row contains the names of image files from the ImageNet2012 dataset as
