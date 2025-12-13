@@ -1,0 +1,1 @@
+[Base chat](https://chatgpt.com/g/g-p-691a44188cc88191a48c3c980bd48f2b/c/6933b6bc-c1c8-832b-9073-4c15bd43bd07)
